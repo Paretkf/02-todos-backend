@@ -4,6 +4,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const todos = require('./app/routers/todos')
+const CORS = require('cors')
+app.use(CORS())
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

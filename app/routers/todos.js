@@ -85,12 +85,13 @@ app.post('/delete/:todoId', (request, response) => {
   Todo.findByIdAndRemove(request.params.todoId, (err, todo) => {
     if (err) {
       response.status(500).send(err)
+    } else {
+      let res = {
+        message: 'Todo successfully deleted',
+        id: todo._id
+      }
+      response.status(200).send(res)
     }
-    let res = {
-      message: 'Todo successfully deleted',
-      id: todo._id
-    }
-    response.status(200).send(res)
   })
 })
 module.exports = app

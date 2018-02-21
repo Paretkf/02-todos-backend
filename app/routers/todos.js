@@ -57,7 +57,7 @@ app.get('/todos', (request, response) => {
   })
 })
 app.post('/post', (request, response) => {
-  let todo = new Todo(request.body)
+  let todo = new Todo({...request.body, user_id: request.session._id})
   todo.save((err, createdTodo) => {
     if (err) {
       response.status(500).send(err)
